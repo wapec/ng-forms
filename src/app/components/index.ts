@@ -9,3 +9,8 @@ export const components: any[] = [
   SecondStepComponent,
   ThirdStepComponent
 ];
+
+export * from './form/form.component';
+export * from './first-step/first-step.component';
+export * from './second-step/second-step.component';
+export * from './third-step/third-step.component';

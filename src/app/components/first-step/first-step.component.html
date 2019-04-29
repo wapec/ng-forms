@@ -3,12 +3,23 @@
   <h1 class="title">First step</h1>
 
   <div class="field">
-    <label class="label">Name</label>
+    <label class="label">Full Name</label>
     <div class="control">
       <input class="input"
-             formControlName="firstName"
+             [ngClass]="{
+             'is-danger': parentForm.get('fullName').invalid
+                           && (parentForm.get('fullName').dirty
+                           || parentForm.get('fullName').touched)
+             }"
+             formControlName="fullName"
              type="text"
-             placeholder="Name">
+             placeholder="Full Name">
+      <p class="help is-danger"
+         *ngIf="parentForm.get('fullName').invalid
+                 && (parentForm.get('fullName').dirty
+                 || parentForm.get('fullName').touched)">Invalid</p>
+      <p class="help is-danger"
+         *ngIf="parentForm.get('fullName').getError('forbiddenValidator')">Name cannot be Sample</p>
     </div>
   </div>
 
@@ -16,13 +27,21 @@
     <label class="label">Username</label>
     <div class="control has-icons-left has-icons-right">
       <input class="input"
+             [ngClass]="{
+             'is-danger': parentForm.get('userName').invalid
+                           && (parentForm.get('userName').dirty
+                           || parentForm.get('userName').touched)
+             }"
              formControlName="userName"
              type="text"
-             placeholder="Username"
-             value="bulma">
+             placeholder="Username">
       <span class="icon is-small is-left">
         <i class="fa fa-user"></i>
       </span>
+      <p class="help is-danger"
+         *ngIf="parentForm.get('userName').invalid
+                 && (parentForm.get('userName').dirty
+                 || parentForm.get('userName').touched)">Invalid</p>
     </div>
   </div>
 
@@ -30,13 +49,21 @@
     <label class="label">Email</label>
     <div class="control has-icons-left has-icons-right">
       <input class="input"
+             [ngClass]="{
+             'is-danger': parentForm.get('email').invalid
+                           && (parentForm.get('email').dirty
+                           || parentForm.get('email').touched)
+             }"
              formControlName="email"
              type="email"
-             placeholder="Email"
-             value="">
+             placeholder="Email">
       <span class="icon is-small is-left">
         <i class="fa fa-envelope"></i>
       </span>
+      <p class="help is-danger"
+         *ngIf="parentForm.get('email').invalid
+                 && (parentForm.get('email').dirty
+                 || parentForm.get('email').touched)">Invalid</p>
     </div>
   </div>
 
@@ -52,6 +79,10 @@
           <option>Option 5</option>
         </select>
       </div>
+      <p class="help is-danger"
+         *ngIf="parentForm.get('select').invalid
+                 && (parentForm.get('select').dirty
+                 || parentForm.get('select').touched)">Invalid</p>
     </div>
   </div>
 
@@ -59,8 +90,17 @@
     <label class="label">Message</label>
     <div class="control">
       <textarea class="textarea"
+                [ngClass]="{
+                 'is-danger': parentForm.get('message').invalid
+                               && (parentForm.get('message').dirty
+                               || parentForm.get('message').touched)
+                 }"
                 formControlName="message"
                 placeholder="Message..."></textarea>
+      <p class="help is-danger"
+         *ngIf="parentForm.get('message').invalid
+                 && (parentForm.get('message').dirty
+                 || parentForm.get('message').touched)">Invalid</p>
     </div>
   </div>
 

@@ -8,9 +8,18 @@
       <label class="label">Street</label>
       <div class="control">
         <input class="input"
+               [ngClass]="{
+               'is-danger': parentForm.get('address').get('street').invalid
+                             && (parentForm.get('address').get('street').dirty
+                             || parentForm.get('address').get('street').touched)
+               }"
                formControlName="street"
                type="text"
                placeholder="Street">
+        <p class="help is-danger"
+           *ngIf="parentForm.get('address').get('street').invalid
+                 && (parentForm.get('address').get('street').dirty
+                 || parentForm.get('address').get('street').touched)">Invalid</p>
       </div>
     </div>
 
@@ -18,9 +27,18 @@
       <label class="label">City</label>
       <div class="control">
         <input class="input"
+               [ngClass]="{
+               'is-danger': parentForm.get('address').get('city').invalid
+                             && (parentForm.get('address').get('city').dirty
+                             || parentForm.get('address').get('city').touched)
+               }"
                formControlName="city"
                type="text"
                placeholder="City">
+        <p class="help is-danger"
+           *ngIf="parentForm.get('address').get('city').invalid
+                 && (parentForm.get('address').get('city').dirty
+                 || parentForm.get('address').get('city').touched)">Invalid</p>
       </div>
     </div>
 
@@ -35,6 +53,10 @@
             <option>Washington</option>
           </select>
         </div>
+        <p class="help is-danger"
+           *ngIf="parentForm.get('address').get('state').get('name').invalid
+                 && (parentForm.get('address').get('state').get('name').dirty
+                 || parentForm.get('address').get('state').get('name').touched)">Invalid</p>
       </div>
       <div class="control">
         <label class="checkbox">
@@ -49,10 +71,19 @@
       <label class="label">Zip Code</label>
       <div class="control">
         <input class="input"
+               [ngClass]="{
+               'is-danger': parentForm.get('address').get('zip').invalid
+                             && (parentForm.get('address').get('zip').dirty
+                             || parentForm.get('address').get('zip').touched)
+               }"
                formControlName="zip"
                type="text"
                mask="000000"
                placeholder="Zip code">
+        <p class="help is-danger"
+           *ngIf="parentForm.get('address').get('zip').invalid
+                 && (parentForm.get('address').get('zip').dirty
+                 || parentForm.get('address').get('zip').touched)">Invalid</p>
       </div>
     </div>
 

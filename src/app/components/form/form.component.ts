@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import {forbiddenValidator} from '../../directives';
 
 @Component({
   selector: 'app-form',
@@ -9,20 +10,26 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class FormComponent implements OnInit {
 
   parentForm = this.fb.group({
-    firstName: ['', Validators.required],
+    fullName: ['',
+      [Validators.required, forbiddenValidator(/sample/i)]
+    ],
     userName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    select: ['', Validators.required],
-    message: ['', Validators.required],
+    select: [null,
+      [Validators.required, forbiddenValidator(/option 3/i)]
+    ],
+    message: ['',
+      [Validators.required, Validators.minLength(20)]
+    ],
     terms: [false, Validators.required],
     address: this.fb.group({
-      street: [''],
-      city: [''],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
       state: this.fb.group({
-        name: [''],
-        restricted: [false]
+        name: ['', [Validators.required, forbiddenValidator(/texas/i)]],
+        restricted: [false, Validators.required]
       }),
-      zip: ['']
+      zip: ['', [Validators.required, Validators.pattern('[0-9]{6}')]]
     }),
     aliases: this.fb.array([
       this.fb.control('First'),
