@@ -1,0 +1,24 @@
+<div class="container wrapper narrow">
+
+  <h3 class="header">
+    <a href="https://bulma.io/"
+       target="_blank">@Bulma</a>
+    framework was used</h3>
+
+  <form [formGroup]="parentForm"
+        (ngSubmit)="onSubmit()">
+
+    <app-first-step [parentForm]="parentForm"></app-first-step>
+    <app-second-step [parentForm]="parentForm"></app-second-step>
+    <app-third-step [parentForm]="parentForm"></app-third-step>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link"
+                type="submit"
+                [disabled]="!parentForm.valid">Submit</button>
+      </div>
+    </div>
+  </form>
+
+</div>

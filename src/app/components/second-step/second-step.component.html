@@ -1,0 +1,61 @@
+<div [formGroup]="parentForm">
+
+  <h1 class="title">Second step</h1>
+
+  <div formGroupName="address">
+
+    <div class="field">
+      <label class="label">Street</label>
+      <div class="control">
+        <input class="input"
+               formControlName="street"
+               type="text"
+               placeholder="Street">
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">City</label>
+      <div class="control">
+        <input class="input"
+               formControlName="city"
+               type="text"
+               placeholder="City">
+      </div>
+    </div>
+
+    <div class="field" formGroupName="state">
+      <label class="label">State</label>
+      <div class="control">
+        <div class="select">
+          <select formControlName="name">
+            <option>California</option>
+            <option>Texas</option>
+            <option>Iowa</option>
+            <option>Washington</option>
+          </select>
+        </div>
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox"
+                 formControlName="restricted">
+          Restricted
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Zip Code</label>
+      <div class="control">
+        <input class="input"
+               formControlName="zip"
+               type="text"
+               mask="000000"
+               placeholder="Zip code">
+      </div>
+    </div>
+
+  </div>
+
+</div>

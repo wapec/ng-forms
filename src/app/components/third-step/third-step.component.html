@@ -1,0 +1,30 @@
+<div [formGroup]="parentForm">
+
+  <h1 class="title">Third step</h1>
+
+  <div formArrayName="aliases">
+
+    <div class="field">
+      <label class="label">Aliases</label>
+      <div class="control"
+           *ngFor="let alias of aliases.controls; let i = index">
+        <input class="input"
+               [formControlName]="i"
+               type="text"
+               [placeholder]="alias.value">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="label">Add new alias</label>
+        <input type="text"
+               class="input" #addAliasInput>
+        <button class="button is-link"
+                (click)="addAlias(addAliasInput.value)">Add</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
